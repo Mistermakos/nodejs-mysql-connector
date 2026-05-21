@@ -2,7 +2,7 @@ import { sha512 } from "js-sha512";
 
 export const getAllUsersModel = async () => {
   try {
-    const [rows, fields] = await global.db.query(`select * from users`);
+    const [rows, fields] = await global.db.query("SELECT * FROM `users`;");
     return rows;
   } catch (err) {
     throw err;

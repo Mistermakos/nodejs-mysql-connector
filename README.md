@@ -1,10 +1,5 @@
-Project for school.<br>
-Page has basic crud operations for 2 types of data (users and sites), for ratings it's only CR
+## Stack and tech
 
-## stack and tech
-
-We used both server side rendering ( for panel ), and client side rendering (for site details, index, filtering data)
-<br>
 <br>Database: MYSQL (Maria DB)
 <br>Backend: node JS (v20.5.1) with express
 
@@ -12,16 +7,20 @@ We used both server side rendering ( for panel ), and client side rendering (for
 
 By docker 
 ``` text 
-docker compose up
+docker compose up --build
 ```
 
 ### Routes
 
-Currently only localhost:3000/api/v1/Users works and returns [] (database is currently empty on start)
-
-### Database structure
-
-We added file for it (look in "setup" folder)
+Currently only localhost:3000/api/v1/Users works and returns 
+[
+    {
+        "id": 1,
+        "login": "admin",
+        "password": ""
+    }
+]
+as made by default. 
 
 # License
 App and the whole repository, including git history are licensed under the MIT License.

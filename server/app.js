@@ -26,14 +26,6 @@ const app = express();
 //MIDDLEWARE
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
-// app.use(
-//   session({
-//     secret: "user", // code
-//     resave: false,
-//     saveUninitialized: true,
-//   })
-// );
-
 app.use("/api/v1", router);
 
 export default app;

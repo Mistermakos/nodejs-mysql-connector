@@ -28,6 +28,11 @@ CREATE TABLE
     PRIMARY KEY (id)
   );
 
+INSERT INTO
+  `users`
+VALUES
+  (NULL, "admin", "");
+
 ALTER TABLE `ratings` ADD KEY `user_id` (`user_id`),
 ADD KEY `site_id` (`site_id`);
 
