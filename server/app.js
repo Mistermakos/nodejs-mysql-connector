@@ -4,13 +4,20 @@ import bodyParser from "body-parser";
 import { router } from "./routes.js";
 import mysql from 'mysql2/promise';
 
-const connection = await mysql.createConnection({
+let connection;
+
+try {
+  connection = await mysql.createConnection({
     host: 'mysql',
-    port: '3306',
+    port: 3306,
     user: 'root',
     password: 'root',
     database: 'PTREDDIT',
-});
+  });
+} catch (err) {
+  console.error("DB connection error:", err);
+  process.exit(1);
+}
 
 global.db = connection;
 

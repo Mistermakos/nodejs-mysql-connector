@@ -1,6 +1,6 @@
 services:
   mysql:
-    image: mysql:9.1.0
+    image: mysql:9
     restart: always
     volumes:
       - ./Database/Database.sql:/docker-entrypoint-initdb.d/Database.sql
@@ -15,4 +15,4 @@ services:
     ports:
       - 3000:3000
     depends_on:
-      - web
+      - mysql
