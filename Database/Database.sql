@@ -1,50 +1,22 @@
 CREATE TABLE
-  `ratings` (
-    `user_id` bigint (20) UNSIGNED DEFAULT NULL,
-    `site_id` bigint (20) UNSIGNED DEFAULT NULL,
-    `rate` tinyint (3) UNSIGNED DEFAULT NULL
-  );
-
-CREATE TABLE
-  `sites` (
-    `id` bigint (20) UNSIGNED NOT NULL AUTO_INCREMENT,
-    `icon` blob DEFAULT NULL,
-    `link` text DEFAULT NULL,
-    `title` varchar(100) NOT NULL,
-    `description` text DEFAULT NULL,
-    `author_id` bigint (20) UNSIGNED DEFAULT NULL,
-    `creation_date` date DEFAULT NULL,
-    PRIMARY KEY (id)
-  );
-
-CREATE TABLE
-  `super_users` (`user_id` bigint (20) UNSIGNED DEFAULT NULL);
-
-CREATE TABLE
-  `users` (
-    `id` bigint (20) UNSIGNED NOT NULL AUTO_INCREMENT,
-    `login` varchar(100) NOT NULL,
+  `Users` (
+    `user_id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+    `login` varchar(100) NOT NULL UNIQUE,
     `password` char(128) NOT NULL,
-    PRIMARY KEY (id)
+    `role` ENUM("user", "admin") NOT NULL DEFAULT "user",
+    PRIMARY KEY (user_id)
   );
 
-INSERT INTO
-  `users`
-VALUES
-  (NULL, "admin", "");
-
-ALTER TABLE `ratings` ADD KEY `user_id` (`user_id`),
-ADD KEY `site_id` (`site_id`);
-
-ALTER TABLE `sites` ADD KEY `author_id` (`author_id`);
-
-ALTER TABLE `super_users` ADD KEY `user_id` (`user_id`);
-
-ALTER TABLE `ratings` ADD CONSTRAINT `ratings_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-ADD CONSTRAINT `ratings_ibfk_2` FOREIGN KEY (`site_id`) REFERENCES `sites` (`id`);
-
-ALTER TABLE `sites` ADD CONSTRAINT `sites_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`);
-
-ALTER TABLE `super_users` ADD CONSTRAINT `super_users_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+CREATE TABLE
+  `Posts` (
+    `post_id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+    `title` varchar(100) NOT NULL,
+    `description` text NOT NULL,
+    `author_id` int UNSIGNED NOT NULL,
+    `creation_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (post_id),
+    FOREIGN KEY (author_id) REFERENCES `Users` (`user_id`)
+    ON DELETE CASCADE
+  );
 
 COMMIT;
