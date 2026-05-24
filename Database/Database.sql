@@ -19,4 +19,6 @@ CREATE TABLE
     ON DELETE CASCADE
   );
 
+INSERT INTO `Users` VALUES (NULL, "admin", "$2b$10$nDwobQDo6Alh8DxCgNC0reJlf.Y839dF.ksF92eb1UU.TbFnBf8lK", "admin");
+
 COMMIT;

@@ -66,22 +66,22 @@ Cascade delete enabled for user posts
 
 ## API Endpoints
 ##### Authentication
-POST /api/auth/register
-POST /api/auth/login
+POST /api/v1/auth/register
+POST /api/v1/auth/login
 ##### Users
-GET /api/users/me
-PATCH /api/users/me
-DELETE /api/users/me
+GET /api/v1/users/me
+PATCH /api/v1/users/me
+DELETE /api/v1/users/me
 ##### Posts
-GET /api/posts
-GET /api/posts/:id
-POST /api/posts
-PUT /api/posts/:id
-DELETE /api/posts/:id
+GET /api/v1/posts
+GET /api/v1/posts/:id
+POST /api/v1/posts
+PUT /api/v1/posts/:id
+DELETE /api/v1/posts/:id
 ##### Admin
-GET /api/admin/users
-DELETE /api/admin/users/:id
-DELETE /api/admin/posts/:id
+GET /api/v1/admin/users
+DELETE /api/v1/admin/users/:id
+DELETE /api/v1/admin/posts/:id
 
 ## Technology Stack
 Node.js / Express or .NET Web API

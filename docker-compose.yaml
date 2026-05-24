@@ -1,0 +1,15 @@
+services:
+  backend:
+    build: ./backend
+    ports: 
+    - "3000:3000"
+  database:
+    image: mysql:9
+    container_name: Database
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD="root"
+      - MYSQL_DATABASE=NMCDATABASE
+    volumes:
+      - ./database:/docker-entrypoint-initdb.d
