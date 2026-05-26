@@ -66,7 +66,7 @@ Cascade delete enabled for user posts
 
 ## API Endpoints
 ##### Authentication
-POST /api/v1/auth/register
+POST /api/v1/auth/register - DONE!
 POST /api/v1/auth/login
 ##### Users
 GET /api/v1/users/me

@@ -1,4 +1,4 @@
-import { getAllPostsModel, getOnePostModel, addOnePostModel, UpdateOnePostModel, DeleteOnePostModel } from "./postsModel.js"
+import { getAllPostsModel, getOnePostModel, addOnePostModel, updateOnePostModel, deleteOnePostModel } from "./postsModel.js"
 
 export const getAllPostsView = async () => {
 }

@@ -1,4 +1,4 @@
-import { databaseConnection } from "../../connection"
+import { databaseConnection } from "../../databaseConnection.js"
 
 export const getAllPostsModel = async () => {
     

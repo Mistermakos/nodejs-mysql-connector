@@ -1,3 +1,5 @@
+import { databaseConnection } from "../../databaseConnection.js"
+
 export let login = async () => {
     try {
         let { login, password } = req.body
@@ -20,4 +22,4 @@ export let login = async () => {
     catch (err) {
         console.log(err)
     }
-} 
+}
