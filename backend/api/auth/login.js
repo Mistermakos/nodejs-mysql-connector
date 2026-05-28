@@ -4,7 +4,7 @@ import { databaseConnection } from "../../databaseConnection.js"
 import { asyncHandler } from "../../utils/asynchandler.js"
 import { secretData } from "../../utils/secret.js"
 
-const loginUser = asyncHandler(async (login, password) => {
+const loginUser = async (login, password) => {
     const [rows] = await databaseConnection.query(
         "SELECT user_id, login, role, password FROM Users WHERE login = ?",
         [login]
@@ -25,31 +25,18 @@ const loginUser = asyncHandler(async (login, password) => {
         throw err;
     }
     return [user.user_id, user.login, user.role]
-})
+}
 
-const createJWT = asyncHandler(async (userId, login, role) => {
+const createJWT = async (userId, login, role) => {
     const secret = secretData;
-
-    // PAYLOAD = dane użytkownika (to co będzie w tokenie)
-    // NIE wkładaj tu haseł!
     const payload = {
         userId: userId,
         login: login,
         role: role
     };
-
-    // SIGN token = tworzy 3-częściowy JWT:
-    // HEADER.PAYLOAD.SIGNATURE
-    const token = jwt.sign(
-        payload,        // dane
-        secret,         // klucz do podpisu
-        {
-            expiresIn: "1h" // ważność tokena
-        }
-    );
-
+    const token = jwt.sign(payload, secret, { expiresIn: "1h" });
     return token;
-})
+}
 
 export let login = asyncHandler(async (req, res) => {
     let { login, password } = req.body
