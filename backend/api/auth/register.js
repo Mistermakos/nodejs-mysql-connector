@@ -11,12 +11,12 @@ const registerUser = async (login, password) => {
     if (searchResult[0].count > 0) {
         const err = new Error("User already exists")
         err.status = 400
-        throw err;
+        throw err
     }
 
     //async handler handles error handling in this case
-    const hashedPassword = await bcrypt.hash(password, 10);
-    let [insertResult] = await databaseConnection.query(
+    const hashedPassword = await bcrypt.hash(password, 10)
+    let insertResult = await databaseConnection.query(
         'INSERT INTO `Users`(login, password, role) VALUES (?,?, "user")',
         [String(login), hashedPassword]
     );
@@ -27,7 +27,7 @@ export const register = asyncHandler(async (req, res) => {
 
     if (!login || !password) {
         return res.status(400).json({
-            message: "Missing parameter (login and password)"
+            message: "Missing parameter (login or password)"
         });
     }
 
