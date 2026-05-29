@@ -1,5 +1,5 @@
 import express from "express"
-import { login } from "./auth/login.js"
+import { login } from "./auth/login/login.js"
 import { register } from "./auth/register.js"
 import {
     getAllPostsController,
