@@ -17,10 +17,22 @@ export const addOnePostModel = async (title, description, creatorId) => {
     return response
 }
 
-export const updateOnePostModel = async () => {
-
+export const updateOnePostModel = async (id, updatedPost) => {
+    const response = await databaseConnection.query(
+        `UPDATE Posts 
+         SET title = ?, description = ?
+         WHERE post_id = ?`,
+        [
+            updatedPost.title,
+            updatedPost.description,
+            id
+        ]
+    )
+    return response
 }
 
-export const deleteOnePostModel = async () => {
-
+export const deleteOnePostModel = async (id) => {
+    const response = await databaseConnection.query(
+        "DELETE FROM `Posts` where post_id = ?", id)
+    return response
 }

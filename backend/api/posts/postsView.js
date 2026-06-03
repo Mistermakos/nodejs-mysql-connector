@@ -15,12 +15,12 @@ export const addOnePostView = async (title, description, creatorId) => {
     return response
 }
 
-export const updateOnePostView = async () => {
-    const response = await updateOnePostModel()
+export const updateOnePostView = async (id, updatedPost) => {
+    const response = await updateOnePostModel(id, updatedPost)
     return response
 }
 
-export const deleteOnePostView = async () => {
-    const response = await deleteOnePostModel()
+export const deleteOnePostView = async (id) => {
+    const response = await deleteOnePostModel(id)
     return response
 }

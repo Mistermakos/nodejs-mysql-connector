@@ -73,11 +73,11 @@ GET /api/v1/users/me
 PATCH /api/v1/users/me
 DELETE /api/v1/users/me
 ##### Posts
-GET /api/v1/posts
-GET /api/v1/posts/:id
-POST /api/v1/posts
-PUT /api/v1/posts/:id
-DELETE /api/v1/posts/:id
+GET /api/v1/posts - DONE!
+GET /api/v1/posts/:id - DONE!
+POST /api/v1/posts - DONE!
+PUT /api/v1/posts/:id - DONE!
+DELETE /api/v1/posts/:id - DONE!
 ##### Admin
 GET /api/v1/admin/users
 DELETE /api/v1/admin/users/:id
