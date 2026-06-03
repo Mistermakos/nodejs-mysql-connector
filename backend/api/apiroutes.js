@@ -1,6 +1,7 @@
 import express from "express"
 import { login } from "./auth/login/login.js"
 import { register } from "./auth/register.js"
+import { verifyToken } from "../utils/verifyToken.js"
 import {
     getAllPostsController,
     getOnePostController,
@@ -17,6 +18,10 @@ router
 router
     .route("/auth/register")
     .post(await register)
+
+//Everything below requires valid JWT
+router.use(await verifyToken)
+
 router.route("/posts")
     .get(await getAllPostsController)
     .post(await addOnePostController)

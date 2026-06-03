@@ -6,6 +6,6 @@ const databaseConnection = await mysql2.createConnection({
     user: 'root',
     password: "root",
     database: 'NMCDATABASE',
-});
+})
 
 export { databaseConnection }
