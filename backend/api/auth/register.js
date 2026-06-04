@@ -2,7 +2,7 @@ import bcrypt from "bcrypt"
 import { databaseConnection } from "../../databaseConnection.js"
 import { asyncHandler } from "../../utils/asynchandler.js"
 
-const registerUser = async (login, password) => {
+export const userExists = async (login) => {
     let [searchResult] = await databaseConnection.query(
         "SELECT COUNT(*) as count FROM `Users` WHERE `login` = ?",
         [String(login)]
@@ -13,7 +13,10 @@ const registerUser = async (login, password) => {
         err.status = 400
         throw err
     }
+}
 
+const registerUser = async (login, password) => {
+    userExists(login)
     //async handler handles error handling in this case
     const hashedPassword = await bcrypt.hash(password, 10)
     let insertResult = await databaseConnection.query(

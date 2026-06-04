@@ -80,8 +80,9 @@ PUT /api/v1/posts/:id - DONE!
 DELETE /api/v1/posts/:id - DONE!
 ##### Admin
 GET /api/v1/admin/users
-DELETE /api/v1/admin/users/:id
-DELETE /api/v1/admin/posts/:id
+POST /api/v1/admin/promoteUser/:id
+##### Help
+GET /api/v1/help
 
 ## Technology Stack
 Node.js / Express or .NET Web API

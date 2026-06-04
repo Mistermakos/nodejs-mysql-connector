@@ -19,14 +19,8 @@ export const addOnePostModel = async (title, description, creatorId) => {
 
 export const updateOnePostModel = async (id, updatedPost) => {
     const response = await databaseConnection.query(
-        `UPDATE Posts 
-         SET title = ?, description = ?
-         WHERE post_id = ?`,
-        [
-            updatedPost.title,
-            updatedPost.description,
-            id
-        ]
+        "UPDATE Posts SET title = ?, description = ? WHERE post_id = ?",
+        [updatedPost.title, updatedPost.description, id]
     )
     return response
 }
