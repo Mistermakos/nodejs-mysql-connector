@@ -24,9 +24,10 @@ export const getAllUsersController = asyncHandler(async (req, res) => {
 export const getOneUserController = asyncHandler(async (req, res) => {
     let id = req.params.id
     const row = (await getOneUserView(id))[0]
-    await userNotFoundChecker(row)
+    userNotFoundChecker(row)
+    const { password, ...safeUser } = row
     res.status(200).json({
-        data: row
+        data: safeUser
     })
 })
 
@@ -58,12 +59,13 @@ export const addOneUserController = asyncHandler(async (req, res) => {
 export const updateOneUserController = asyncHandler(async (req, res) => {
     const { id } = req.params
     const row = (await getOneUserView(id))[0]
-    await userNotFoundChecker(row)
+    userNotFoundChecker(row)
     if (req.user.userId != row.user_id) {
         const err = new Error("You are not the User")
         err.status = 403
         throw err
     }
+    console.log(id, row.password, row)
     const hashedPassword = req.body.password ? await bcrypt.hash(req.body.password, 10) : row.password
     const login = req.body.login ?? row.login
     await userExists(login)
@@ -84,12 +86,13 @@ export const updateOneUserController = asyncHandler(async (req, res) => {
 export const deleteOneUserController = asyncHandler(async (req, res) => {
     let id = req.params.id
     const row = (await getOneUserView(id))[0]
-    await userNotFoundChecker(row)
+    userNotFoundChecker(row)
     if (req.user.userId != row.user_id && req.user.role != "admin") {
         const err = new Error("You are not the User/Allowed")
         err.status = 403
         throw err
     }
+    req.user = {}
     const response = await deleteOneUserView(id)
     res.status(200).json({
         data: { message: "Data deleted successfully" }

@@ -69,9 +69,9 @@ Cascade delete enabled for user posts
 POST /api/v1/auth/register - DONE!
 POST /api/v1/auth/login - DONE!
 ##### Users
-GET /api/v1/users/me
-PATCH /api/v1/users/me
-DELETE /api/v1/users/me
+GET /api/v1/users/me - DONE!
+PUT /api/v1/users/me - DONE!
+DELETE /api/v1/users/me - DONE!
 ##### Posts
 GET /api/v1/posts - DONE!
 GET /api/v1/posts/:id - DONE!

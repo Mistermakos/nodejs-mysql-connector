@@ -6,7 +6,7 @@ export const getAllUsersModel = async () => {
 }
 
 export const getOneUserModel = async (id) => {
-    const [rows, fields] = await databaseConnection.query("SELECT `user_id`, `login`, `role` FROM `Users` WHERE `user_id` = ? ;",
+    const [rows, fields] = await databaseConnection.query("SELECT * FROM `Users` WHERE `user_id` = ? ;",
         parseInt(id))
     return rows
 }

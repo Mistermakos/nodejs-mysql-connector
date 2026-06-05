@@ -16,34 +16,41 @@ import {
     updateOneUserController,
     deleteOneUserController
 } from "./users/usersController.js"
-
+import {
+    getMeController,
+    updateMeController,
+    deleteMeController
+} from "./users/meController.js"
 
 let router = express.Router()
 
 router
     .route("/auth/login")
-    .post(await login)
+    .post(login)
 router
     .route("/auth/register")
-    .post(await register)
+    .post(register)
 
 //Everything below requires valid JWT
-router.use(await verifyToken)
+router.use(verifyToken)
 
 router.route("/posts")
-    .get(await getAllPostsController)
-    .post(await addOnePostController)
+    .get(getAllPostsController)
+    .post(addOnePostController)
 router.route("/posts/:id")
-    .get(await getOnePostController)
-    .put(await updateOnePostController)
-    .delete(await deleteOnePostController)
+    .get(getOnePostController)
+    .put(updateOnePostController)
+    .delete(deleteOnePostController)
 router.route("/users")
-    .get(await getAllUsersController)
-    .post(await addOneUserController)
+    .get(getAllUsersController)
+    .post(addOneUserController)
+router.route("/users/me/")
+    .get(getMeController)
+    .put(updateMeController)
+    .delete(deleteMeController)
 router.route("/users/:id")
-    .get(await getOneUserController)
-    .put(await updateOneUserController)
-    .delete(await deleteOneUserController)
-
+    .get(getOneUserController)
+    .put(updateOneUserController)
+    .delete(deleteOneUserController)
 
 export { router }
