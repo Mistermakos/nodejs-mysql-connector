@@ -79,13 +79,13 @@ POST /api/v1/posts - DONE!
 PUT /api/v1/posts/:id - DONE!
 DELETE /api/v1/posts/:id - DONE!
 ##### Admin
-GET /api/v1/admin/users
+GET /api/v1/admin/users - DONE!
 POST /api/v1/admin/promoteUser/:id
 ##### Help
 GET /api/v1/help
 
 ## Technology Stack
-Node.js / Express or .NET Web API
+Node.js / Express Web API
 MySQL
 JWT authentication
 bcrypt password hashing

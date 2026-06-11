@@ -22,6 +22,10 @@ import {
     deleteMeController
 } from "./users/meController.js"
 
+import {
+    getAllAdminsController
+} from "./admin/adminController.js"
+
 let router = express.Router()
 
 router
@@ -52,5 +56,8 @@ router.route("/users/:id")
     .get(getOneUserController)
     .put(updateOneUserController)
     .delete(deleteOneUserController)
+
+router.route("/admins")
+    .get(getAllAdminsController)
 
 export { router }
