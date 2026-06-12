@@ -23,7 +23,8 @@ import {
 } from "./users/meController.js"
 
 import {
-    getAllAdminsController
+    getAllAdminsController,
+    promoteUserController
 } from "./admin/adminController.js"
 
 let router = express.Router()
@@ -59,5 +60,7 @@ router.route("/users/:id")
 
 router.route("/admins")
     .get(getAllAdminsController)
+router.route("/admins/promoteUser/:id")
+    .post(promoteUserController)
 
 export { router }

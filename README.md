@@ -80,7 +80,7 @@ PUT /api/v1/posts/:id - DONE!
 DELETE /api/v1/posts/:id - DONE!
 ##### Admin
 GET /api/v1/admin/users - DONE!
-POST /api/v1/admin/promoteUser/:id
+POST /api/v1/admin/promoteUser/:id - DONE!
 ##### Help
 GET /api/v1/help
 
